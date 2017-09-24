@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
   	username: 'Lolman300'
   },{
   	id: 2, 
-  	username: 'dickheadFucker'
+  	username: 'niceMan'
   }
 ]
   res.json(results);

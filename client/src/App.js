@@ -9,10 +9,28 @@ let body = {};
 
 class App extends Component {
 
-  state = {
-    users: [],
-    isForm: true,
-    isResults: false
+  constructor(props){
+    super(props);
+
+    this.state = {
+      users: [],
+      tweets: [],
+      isForm: true,
+      isResults: false
+    }
+
+    this.pageStateHandler = this.pageStateHandler.bind(this);
+
+  }
+
+  pageStateHandler() {
+    
+    this.setState({
+      isForm: !this.state.isForm,
+      isResults: !this.state.isResults,
+    });
+
+    console.log(this.state);
   }
 
   componentDidMount() {
@@ -21,15 +39,14 @@ class App extends Component {
       .then(users => this.setState({users}));
   }
 
-
   render() {
 
     if(this.state.isForm) {
-      body = <Form />
+      body = <Form pageStateHandler = {this.pageStateHandler}/>
     }
 
     if(this.state.isResults){
-      body = <SubPage />
+      body = <SubPage pageStateHandler = {this.pageStateHandler}/>
     }
 
     return (

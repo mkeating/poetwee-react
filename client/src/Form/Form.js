@@ -26,11 +26,13 @@ class Form extends Component {
       headers: {"Content-Type": "application/JSON"}
     })
       .then(res => res.json())
-      .then(results => console.log(results));
+      .then(results => {
+        
+       console.log(this.props.pageStateHandler);
 
-    
-      //.then(res => res.json())
-      //.then(console.log(res.json()));
+       this.props.pageStateHandler();
+
+      });
       
   }
 
