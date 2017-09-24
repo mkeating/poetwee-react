@@ -13,7 +13,6 @@ class App extends Component {
     super(props);
 
     this.state = {
-      users: [],
       tweets: [],
       isForm: true,
       isResults: false
@@ -33,12 +32,6 @@ class App extends Component {
     console.log(this.state);
   }
 
-  componentDidMount() {
-    fetch('/users')
-      .then(res => res.json())
-      .then(users => this.setState({users}));
-  }
-
   render() {
 
     if(this.state.isForm) {
@@ -53,14 +46,8 @@ class App extends Component {
 
 
       <div className="App">
-        <h1> Users </h1>
-        {this.state.users.map(user =>
-          <div key={user.id}>{user.username}</div>
-        )}
         
-
         {body}
-        
       
       </div>
      
