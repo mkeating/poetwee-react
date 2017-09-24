@@ -28,9 +28,8 @@ class Form extends Component {
       .then(res => res.json())
       .then(results => {
         
-       console.log(this.props.pageStateHandler);
-
-       this.props.pageStateHandler();
+        this.props.tweetStateHandler(results);
+        this.props.pageStateHandler();
 
       });
       

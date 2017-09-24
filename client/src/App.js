@@ -19,7 +19,7 @@ class App extends Component {
     }
 
     this.pageStateHandler = this.pageStateHandler.bind(this);
-
+    this.tweetStateHandler = this.tweetStateHandler.bind(this);
   }
 
   pageStateHandler() {
@@ -32,21 +32,30 @@ class App extends Component {
     console.log(this.state);
   }
 
+  tweetStateHandler(tweets) {
+    this.setState({tweets: tweets});
+  }
+
   render() {
 
     if(this.state.isForm) {
-      body = <Form pageStateHandler = {this.pageStateHandler}/>
+      body = <Form 
+        pageStateHandler = {this.pageStateHandler}
+        tweetStateHandler = {this.tweetStateHandler}
+        />
     }
 
     if(this.state.isResults){
-      body = <SubPage pageStateHandler = {this.pageStateHandler}/>
+      body = <SubPage 
+        pageStateHandler = {this.pageStateHandler}
+        tweetStateHandler = {this.tweetStateHandler}/>
     }
 
     return (
 
 
       <div className="App">
-        
+        <h1> Poetwee </h1>
         {body}
       
       </div>
