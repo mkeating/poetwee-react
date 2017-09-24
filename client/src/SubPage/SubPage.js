@@ -12,6 +12,8 @@ class SubPage extends Component {
     return (
       <div>
         Hell yeah form submitted
+
+        <button onClick={this.props.pageStateHandler}> Start over </button>
       </div>
     );
   }
