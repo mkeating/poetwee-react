@@ -1,0 +1,33 @@
+.swiper {
+
+  text-align: center;
+  border: 1px solid black;
+  margin: 2em auto;
+  width: 900px;
+  overflow-x: hidden;
+}
+
+.swiper-wrapper {
+
+	width: 9999px;
+	position: relative;
+}
+
+.slideLeft {
+
+	color:blue;
+}
+
+.slideRight {
+
+	color:red;
+}
+
+
+.button {
+	height: 50px;
+	width: 50px;
+	display: inline;
+	margin: 1em;
+	border: 1px solid black;
+}

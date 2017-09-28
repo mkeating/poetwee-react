@@ -28,8 +28,6 @@ class App extends Component {
       isForm: !this.state.isForm,
       isResults: !this.state.isResults,
     });
-
-    console.log(this.state);
   }
 
   tweetStateHandler(tweets) {
@@ -48,7 +46,8 @@ class App extends Component {
     if(this.state.isResults){
       body = <SubPage 
         pageStateHandler = {this.pageStateHandler}
-        tweetStateHandler = {this.tweetStateHandler}/>
+        tweetStateHandler = {this.tweetStateHandler}
+        tweets = {this.state.tweets}/>
     }
 
     return (
