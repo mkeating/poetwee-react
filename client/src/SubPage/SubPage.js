@@ -5,42 +5,14 @@ import Swiper from '../Swiper/Swiper';
 
 class SubPage extends Component {
 
-  /*constructor(props) {
-    super(props);
-    //console.log('subpage constructor');
-    //console.log(typeof(this.props.tweets));
-  }*/
-
-  /*renderSwipers(tweetGroups) {
-
-    console.log('tweetGroups: ' + tweetGroups);
-    
-    for(let key in tweetGroups){
-      console.log(tweetGroups);
-      return (
-          <Swiper tweets={tweetGroups[key]} />
-        )
-    }
-        
-    
-  }*/
-
-
   render() {
 
-   
-    /*for(let key in this.props.tweets){
-      swipers.push(<Swiper tweets={this.props.tweets[key]} key={'swiper' + key} />)
-    }
-    const doubled = numbers.map((number) => number * 2);*/
-
+    //This creates a group of n Swipers, where n is the number of words in the user's input
     let swipers = this.props.tweets.map((item, index) => {
 
-      console.log('swiper creation');
-      console.log(item);
       return(
-        <Swiper tweets={item} key={'swiper-' + index}  unique={'swiper-' + index}/>
-      )
+          <Swiper tweets={item} key={'swiper-' + index}  unique={'swiper-' + index}/>
+        )
       } 
     );
     

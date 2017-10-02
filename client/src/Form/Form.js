@@ -31,10 +31,8 @@ class Form extends Component {
         this.props.tweetStateHandler(results);
         this.props.pageStateHandler();
 
-      });
-      
+      });     
   }
-
 
   render() {
     return (

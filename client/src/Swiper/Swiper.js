@@ -3,8 +3,6 @@ import './Swiper.css';
 
 import Item from './Item/Item';
 
-//TODO better keys, name children better
-
 const children = [];
 
 class Swiper extends Component {
@@ -12,21 +10,15 @@ class Swiper extends Component {
 	constructor(props){
 		super(props);
   
-  //console.log(this.key);
-
-
 		this.state = {
 			slidingLeft: false,
 			slidingRight: false, 
       currentItem: children[0]
 		};
 
-
     this.clickLeft = this.clickLeft.bind(this);
     this.clickRight = this.clickRight.bind(this); 
 	}
-
-  //TODO: check for sliding state
 
 	clickLeft() {
 		if(!this.state.slidingLeft){
@@ -36,7 +28,6 @@ class Swiper extends Component {
         this.setState({slidingLeft: !this.state.slidingLeft}); 
         //update current item
       }, 500);
-
     } 
   }
 
@@ -47,18 +38,16 @@ class Swiper extends Component {
       setTimeout(() => { 
         this.setState({slidingRight: !this.state.slidingRight}); 
           //update current item
-        }, 500);
-    }
-		
+      }, 500);
+    }	
 	}
 
   render() {
 
-  let children = this.props.tweets.map((tweet, index) => {
-
+    //This builds a group of Items, each containing a tweet
+    let children = this.props.tweets.map((tweet, index) => {
       return(<Item id={index} key={this.props.unique + 'item' + index } content={tweet}/>);
-
-  });
+    });
 
   	let wrapperClasses = ['swiper-wrapper'];
 
@@ -75,8 +64,7 @@ class Swiper extends Component {
     
       //slide the viewport by item length
     }
-    console.log('from swiper:');
-  	console.log(children);
+
     return (
     <div>
       <div className="swiper">

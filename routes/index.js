@@ -3,13 +3,8 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'buh' });
+  res.render('index', { title: 'This isnt an endpoint' });
 });
-
-router.get('/get-tweets', function(req, res, next) {
-  res.render('index', { title: 'muuu' });
-});
-
 
 router.post('/get-tweets', function(req, res, next){
 	let results = [
