@@ -11,10 +11,11 @@ class Swiper extends Component {
 
 	constructor(props){
 		super(props);
-
+  
+  //console.log(this.key);
 
   for(let i = 0; i < this.props.tweets.length; i ++){
-    children.push(<Item id={i} key={i} content={this.props.tweets[i]}/>);
+    children.push(<Item id={i} key={this.props.unique + 'item' + i } content={this.props.tweets[i]}/>);
   }
 
 		this.state = {
@@ -39,7 +40,6 @@ class Swiper extends Component {
         //update current item
       }, 500);
 
-	   console.log(this.state.currentItem);
     } 
   }
 
@@ -72,8 +72,8 @@ class Swiper extends Component {
     
       //slide the viewport by item length
     }
-
-  	
+    console.log('from swiper:');
+  	console.log(children);
     return (
     <div>
       <div className="swiper">
