@@ -35,17 +35,15 @@ class SubPage extends Component {
     const doubled = numbers.map((number) => number * 2);*/
 
     let swipers = this.props.tweets.map((item, index) => {
-      console.log('making swipers');
-      console.log(index);
+
+      console.log('swiper creation');
+      console.log(item);
       return(
         <Swiper tweets={item} key={'swiper-' + index}  unique={'swiper-' + index}/>
       )
       } 
     );
     
-    console.log('swipers');
-    console.log(swipers);
-
     return (
       <div>
           {swipers}

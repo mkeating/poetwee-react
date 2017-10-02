@@ -14,9 +14,6 @@ class Swiper extends Component {
   
   //console.log(this.key);
 
-  for(let i = 0; i < this.props.tweets.length; i ++){
-    children.push(<Item id={i} key={this.props.unique + 'item' + i } content={this.props.tweets[i]}/>);
-  }
 
 		this.state = {
 			slidingLeft: false,
@@ -56,6 +53,12 @@ class Swiper extends Component {
 	}
 
   render() {
+
+  let children = this.props.tweets.map((tweet, index) => {
+
+      return(<Item id={index} key={this.props.unique + 'item' + index } content={tweet}/>);
+
+  });
 
   	let wrapperClasses = ['swiper-wrapper'];
 
