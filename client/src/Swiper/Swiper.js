@@ -72,25 +72,26 @@ class Swiper extends Component {
     //TODO: this probably shouldnt be in render()??
 
     let children = this.props.tweets.map((tweet, index) => {
-      console.log('gen children');
+      //console.log('gen children');
       return(<Item id={index} key={this.props.unique + 'item' + index } content={tweet}/>);
     });
 
+    let currentItem = children[this.state.currentIndex];
+
 
     console.log('swiper render');
-    console.log(this.state.currentItem);
-    console.log(this.children);
+    console.log(currentItem);
 
     if(this.state.slidingLeft){
       wrapperClasses.push('slideLeft');
-      console.log(wrapperClasses);
+      //console.log(wrapperClasses);
 
       //slide the viewport by item length
     }
 
     if(this.state.slidingRight){
       wrapperClasses.push('slideRight');
-      console.log(wrapperClasses);
+      //console.log(wrapperClasses);
       //slide the viewport by item length
     }
 
