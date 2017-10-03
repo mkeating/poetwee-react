@@ -14,7 +14,9 @@ class Swiper extends Component {
   
 		this.state = {
 			slidingLeft: false,
-			slidingRight: false, 
+			slidingRight: false,
+      currentIndex: 0, 
+      currentOffset: 0
 		};
 
     this.clickLeft = this.clickLeft.bind(this);
@@ -29,7 +31,7 @@ class Swiper extends Component {
 		if(!this.state.slidingLeft){
       this.setState({slidingLeft: !this.state.slidingLeft});
       this.setState({currentIndex: this.state.currentIndex - 1}); 
-      
+       
 
 
       setTimeout(() => { 
@@ -46,6 +48,8 @@ class Swiper extends Component {
     if(!this.state.slidingRight){
       this.setState({slidingRight: !this.state.slidingRight});
       this.setState({currentIndex: this.state.currentIndex + 1});
+
+       this.setState({currentOffset: (this.state.currentIndex + 1) * 900 }); 
       
       setTimeout(() => { 
         this.setState({slidingRight: !this.state.slidingRight}); 
@@ -76,17 +80,23 @@ class Swiper extends Component {
       return(<Item id={index} key={this.props.unique + 'item' + index } content={tweet}/>);
     });
 
-    let currentItem = children[this.state.currentIndex];
+    //not currently needed actually
+    //let currentItem = children[this.state.currentIndex];
+
+     let style = {style: {left: this.state.currentOffset}};
 
 
     console.log('swiper render');
-    console.log(currentItem);
+    //console.log(currentItem);
 
     if(this.state.slidingLeft){
       wrapperClasses.push('slideLeft');
       //console.log(wrapperClasses);
 
       //slide the viewport by item length
+      //style={{marginRight: spacing + 'em'}}
+     
+
     }
 
     if(this.state.slidingRight){
@@ -97,7 +107,7 @@ class Swiper extends Component {
 
     return (
     <div>
-      <div className="swiper">
+      <div className="swiper" style= {style}>
       	<div className={wrapperClasses.join(' ')}>
        	 	 {children}
        	</div>
