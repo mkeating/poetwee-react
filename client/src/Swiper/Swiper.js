@@ -5,7 +5,7 @@ import Item from './Item/Item';
 
 
 //TODO: set currentItem. might have to rethink how I'm doing sliding
-const children = [];
+
 
 class Swiper extends Component {
 
@@ -15,27 +15,28 @@ class Swiper extends Component {
 		this.state = {
 			slidingLeft: false,
 			slidingRight: false, 
-      currentItem: null
 		};
 
     this.clickLeft = this.clickLeft.bind(this);
     this.clickRight = this.clickRight.bind(this); 
+
+
 	}
-
-
 
 	clickLeft() {
 
     
 		if(!this.state.slidingLeft){
       this.setState({slidingLeft: !this.state.slidingLeft});
+      this.setState({currentIndex: this.state.currentIndex - 1}); 
       
+
 
       setTimeout(() => { 
         this.setState({slidingLeft: !this.state.slidingLeft}); 
+          //update current item
 
-
-      }, 2000);
+      }, 10);
     } 
   }
 
@@ -44,30 +45,41 @@ class Swiper extends Component {
     
     if(!this.state.slidingRight){
       this.setState({slidingRight: !this.state.slidingRight});
+      this.setState({currentIndex: this.state.currentIndex + 1});
       
       setTimeout(() => { 
         this.setState({slidingRight: !this.state.slidingRight}); 
-          //update current item
-      }, 2000);
+        
+      }, 10);
     }	
 	}
 
-  componentDidMount() {
-    this.setState({currentItem: children[0]});
+  componentDidMount(props) {
+    this.setState({currentIndex: 0});
+     
+  }
+
+  componentDidUpdate() {
+
+    //this.setState({currentItem: children[this.state.currentIndex]});
   }
 
   render() {
 
+  	let wrapperClasses = ['swiper-wrapper'];
+
     //This builds a group of Items, each containing a tweet
+    //TODO: this probably shouldnt be in render()??
+
     let children = this.props.tweets.map((tweet, index) => {
+      console.log('gen children');
       return(<Item id={index} key={this.props.unique + 'item' + index } content={tweet}/>);
     });
 
 
-
-  	let wrapperClasses = ['swiper-wrapper'];
     console.log('swiper render');
     console.log(this.state.currentItem);
+    console.log(this.children);
 
     if(this.state.slidingLeft){
       wrapperClasses.push('slideLeft');

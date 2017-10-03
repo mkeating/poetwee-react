@@ -8,6 +8,8 @@ class SubPage extends Component {
   render() {
 
     //This creates a group of n Swipers, where n is the number of words in the user's input
+    //TODO: this probably shouldnt be in render()??
+
     let swipers = this.props.tweets.map((item, index) => {
 
       return(
