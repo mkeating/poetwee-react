@@ -3,6 +3,8 @@ import './Swiper.css';
 
 import Item from './Item/Item';
 
+
+//TODO: set currentItem. might have to rethink how I'm doing sliding
 const children = [];
 
 class Swiper extends Component {
@@ -13,34 +15,46 @@ class Swiper extends Component {
 		this.state = {
 			slidingLeft: false,
 			slidingRight: false, 
-      currentItem: children[0]
+      currentItem: null
 		};
 
     this.clickLeft = this.clickLeft.bind(this);
     this.clickRight = this.clickRight.bind(this); 
 	}
 
+
+
 	clickLeft() {
+
+    
 		if(!this.state.slidingLeft){
       this.setState({slidingLeft: !this.state.slidingLeft});
+      
 
       setTimeout(() => { 
         this.setState({slidingLeft: !this.state.slidingLeft}); 
-        //update current item
-      }, 500);
+
+
+      }, 2000);
     } 
   }
 
 	clickRight() {
+
+    
     if(!this.state.slidingRight){
       this.setState({slidingRight: !this.state.slidingRight});
       
       setTimeout(() => { 
         this.setState({slidingRight: !this.state.slidingRight}); 
           //update current item
-      }, 500);
+      }, 2000);
     }	
 	}
+
+  componentDidMount() {
+    this.setState({currentItem: children[0]});
+  }
 
   render() {
 
@@ -49,7 +63,11 @@ class Swiper extends Component {
       return(<Item id={index} key={this.props.unique + 'item' + index } content={tweet}/>);
     });
 
+
+
   	let wrapperClasses = ['swiper-wrapper'];
+    console.log('swiper render');
+    console.log(this.state.currentItem);
 
     if(this.state.slidingLeft){
       wrapperClasses.push('slideLeft');
@@ -61,7 +79,6 @@ class Swiper extends Component {
     if(this.state.slidingRight){
       wrapperClasses.push('slideRight');
       console.log(wrapperClasses);
-    
       //slide the viewport by item length
     }
 
