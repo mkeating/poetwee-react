@@ -1,10 +1,9 @@
 .item {
 	float:left;
 	width:100%;
-	/*overflow: hidden;*/
 	height: 100%;
-	z-index: -1000;
 	width: 100%;
+	text-align:center;
 	background-color: blue;
 	color: white;
 	display: inline;
