@@ -1,10 +1,11 @@
 .swiper {
 
   text-align: center;
-  border: 1px solid black;
   margin: 2em auto;
   width: 100%;
-  overflow-x: hidden;
+  height: 120px;
+  max-height: 120px;
+  box-sizing: border-box;
 }
 
 .button {
@@ -17,22 +18,40 @@
 
 /* Sliding functionality */
 
-.background-enter {
+.slidingLeft-enter {
 	transform: translate(100%);
 }
 
-.background-enter.background-enter-active {
+.slidingLeft-enter.slidingLeft-enter-active {
 	transform: translate(0%);
-	transition: transform 1000ms ease-in-out;
+	transition: transform 600ms ease-in-out;
 }
 
-.background-leave {
+.slidingLeft-leave {
 	transform: translate(0%);
 }
 
-.background-leave.background-leave-active {
+.slidingLeft-leave.slidingLeft-leave-active {
 	transform: translate(-100%);
-	transition: transform 1000ms ease-in-out;
+	transition: transform 600ms ease-in-out;
+}
+
+.slidingRight-enter {
+	transform: translate(-100%);
+}
+
+.slidingRight-enter.slidingRight-enter-active {
+	transform: translate(0%);
+	transition: transform 600ms ease-in-out;
+}
+
+.slidingRight-leave {
+	transform: translate(0%);
+}
+
+.slidingRight-leave.slidingRight-leave-active {
+	transform: translate(100%);
+	transition: transform 600ms ease-in-out;
 }
 
 

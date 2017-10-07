@@ -5,7 +5,7 @@ import './Swiper.css';
 import Item from './Item/Item';
 
 
-//TODO: handle looping around, sliding directions?
+//TODO: sliding directions?
 
 
 class Swiper extends Component {
@@ -14,9 +14,8 @@ class Swiper extends Component {
 		super(props);
   
 		this.state = {
-			slidingLeft: false,
-			slidingRight: false,
-      currentIndex: 0, 
+      currentIndex: 0,
+      currentTransitionName: 'slidingLeft' 
 		};
 
     this.clickLeft = this.clickLeft.bind(this);
@@ -25,7 +24,9 @@ class Swiper extends Component {
 	}
 
 	clickLeft() {
-    
+
+    this.setState({currentTransitionName: 'slidingLeft'});
+
     if(this.state.currentIndex >= 1){
       this.setState({currentIndex: this.state.currentIndex - 1});
     } else {
@@ -36,6 +37,9 @@ class Swiper extends Component {
 
 	clickRight() {
 
+
+    this.setState({currentTransitionName: 'slidingRight'});
+
     if(this.state.currentIndex < (this.props.tweets.length - 1)){
       this.setState({currentIndex: this.state.currentIndex + 1});
     } else {
@@ -43,49 +47,25 @@ class Swiper extends Component {
     }
    
 	}
-
-  /*componentDidMount(props) {
-    this.setState({currentIndex: 0});
-     
-  }*/
-
   
   render() {
 
-  	let wrapperClasses = ['swiper-wrapper'];
-
-    //This builds a group of Items, each containing a tweet
-
     let tweets = this.props.tweets.map((tweet, index) => {
       return tweet;
-      //return(<Item id={index} key={this.props.unique + 'item' + index } content={tweet}/>);
     });
-
-
-    /*if(this.state.slidingLeft){
-      wrapperClasses.push('slideLeft');
-
-    }
-
-    if(this.state.slidingRight){
-      wrapperClasses.push('slideRight');
-      //console.log(wrapperClasses);
-      //slide the viewport by item length
-    }*/
 
     return (
     <div>
       <div className="swiper" >
       	
         <ReactCSSTransitionGroup
-          transitionName="background"
+          transitionName={this.state.currentTransitionName}
           transitionEnterTimeout={1000}
           transitionLeaveTimeout={1000}
         >
-          <Item content={tweets[this.state.currentIndex]}/>
+          <Item content={tweets[this.state.currentIndex]} key={'item' + this.state.currentIndex}/>
         </ReactCSSTransitionGroup>
-       	 	 
-       	
+       
        	
       </div>
       <div className = "button" onClick={this.clickLeft}> Left Button</div>

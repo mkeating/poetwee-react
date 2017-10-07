@@ -1,12 +1,13 @@
 .item {
 	float:left;
-	border: 1px solid red;
 	width:100%;
-	overflow: hidden;
-	height: 120px;
+	/*overflow: hidden;*/
+	height: 100%;
+	z-index: -1000;
 	width: 100%;
 	background-color: blue;
 	color: white;
+	display: inline;
 
 }
 
