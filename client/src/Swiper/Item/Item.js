@@ -5,7 +5,7 @@ class Item extends Component {
   render( ) {
     return (
       <div className="item" id={this.props.id}>
-        <div className="item-content">{this.props.content}</div>
+        {this.props.content}
       </div>
     );
   }

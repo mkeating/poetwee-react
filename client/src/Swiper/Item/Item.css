@@ -5,15 +5,9 @@
 	overflow: hidden;
 	height: 120px;
 	width:900px;
-}
+	background-color: blue;
+	color: white;
 
-.item-content {
-   /*position: absolute;*/
-   top: 0;
-   left: 0;
-   width: 100%; 
-   height: 100%;
 }
-
 
 
