@@ -22,40 +22,26 @@ class Swiper extends Component {
     this.clickLeft = this.clickLeft.bind(this);
     this.clickRight = this.clickRight.bind(this); 
 
-
 	}
 
 	clickLeft() {
+    
+    if(this.state.currentIndex >= 1){
+      this.setState({currentIndex: this.state.currentIndex - 1});
+    } else {
+      this.setState({currentIndex: this.props.tweets.length-1});
+    }
 
-    this.setState({currentIndex: this.state.currentIndex - 1});
-		/*if(!this.state.slidingLeft){
-      this.setState({slidingLeft: !this.state.slidingLeft});
-      this.setState({currentIndex: this.state.currentIndex - 1}); 
-       
-
-
-      setTimeout(() => { 
-        this.setState({slidingLeft: !this.state.slidingLeft}); 
-        
-
-      }, 10);
-    } */
   }
 
 	clickRight() {
-    this.setState({currentIndex: this.state.currentIndex + 1});
-    
-    /*if(!this.state.slidingRight){
-      this.setState({slidingRight: !this.state.slidingRight});
+
+    if(this.state.currentIndex < (this.props.tweets.length - 1)){
       this.setState({currentIndex: this.state.currentIndex + 1});
-
-
-      
-      setTimeout(() => { 
-        this.setState({slidingRight: !this.state.slidingRight}); 
-        
-      }, 10);
-    }	*/
+    } else {
+      this.setState({currentIndex: 0});
+    }
+   
 	}
 
   /*componentDidMount(props) {
@@ -90,7 +76,7 @@ class Swiper extends Component {
     return (
     <div>
       <div className="swiper" >
-      	<div className={wrapperClasses.join(' ')}>
+      	
         <ReactCSSTransitionGroup
           transitionName="background"
           transitionEnterTimeout={1000}
@@ -99,7 +85,7 @@ class Swiper extends Component {
           <Item content={tweets[this.state.currentIndex]}/>
         </ReactCSSTransitionGroup>
        	 	 
-       	</div>
+       	
        	
       </div>
       <div className = "button" onClick={this.clickLeft}> Left Button</div>

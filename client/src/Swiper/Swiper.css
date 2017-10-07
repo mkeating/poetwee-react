@@ -3,14 +3,8 @@
   text-align: center;
   border: 1px solid black;
   margin: 2em auto;
-  width: 900px;
+  width: 100%;
   overflow-x: hidden;
-}
-
-.swiper-wrapper {
-
-	width: 9999px;
-	position: relative;
 }
 
 .button {
