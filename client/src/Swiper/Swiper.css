@@ -1,9 +1,8 @@
 .swiper {
-
-  
   margin: 2em auto;
   width: 100%;
   height: 120px;
+  position: relative;
 }
 
 .button {
@@ -18,6 +17,7 @@
 
 .slidingRight-enter {
 	transform: translate(100%);
+	left: 100%;
 }
 
 .slidingRight-enter.slidingRight-enter-active {
