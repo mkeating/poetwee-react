@@ -5,7 +5,7 @@ import './Swiper.css';
 import Item from './Item/Item';
 
 
-//TODO: sliding directions?
+//TODO: prevent multiple quick clicks
 
 
 class Swiper extends Component {
@@ -56,13 +56,13 @@ class Swiper extends Component {
 
     return (
     <div>
-      <div className="swiper" >
+      <div className="swiper">
       	
         <ReactCSSTransitionGroup
           transitionName={this.state.currentTransitionName}
-          transitionEnterTimeout={1000}
-          transitionLeaveTimeout={1000}
-        >
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={500}
+          >
           <Item content={tweets[this.state.currentIndex]} key={'item' + this.state.currentIndex}/>
         </ReactCSSTransitionGroup>
        
