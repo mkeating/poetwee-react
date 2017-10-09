@@ -7,7 +7,7 @@ const Twitter = new twit(config);
 exports.getTweets = async (req, res) => {
 	
 	//get user input
-	
+	const searchQuery = req.body;
 
 	//split into individual words
 	const searchWords = searchQuery.split(' ').map((word) => ` ${word} `);

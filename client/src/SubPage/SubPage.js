@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 import Swiper from '../Swiper/Swiper';
 
 class SubPage extends Component {
@@ -11,12 +10,10 @@ class SubPage extends Component {
     //TODO: this probably shouldnt be in render()??
 
     let swipers = this.props.tweets.map((item, index) => {
-
       return(
-          <Swiper tweets={item} key={'swiper-' + index}  unique={'swiper-' + index}/>
-        )
-      } 
-    );
+            <Swiper tweets={item} key={'swiper-' + index}  unique={'swiper-' + index}/>
+      )
+    });
     
     return (
       <div>

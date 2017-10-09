@@ -59,6 +59,8 @@ class Swiper extends Component {
       <div className="swiper">
       	
         <ReactCSSTransitionGroup
+          component="div"
+          className="item-container"
           transitionName={this.state.currentTransitionName}
           transitionEnterTimeout={500}
           transitionLeaveTimeout={500}

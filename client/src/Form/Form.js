@@ -23,11 +23,12 @@ class Form extends Component {
 
     fetch('/get-tweets', {
       method: 'POST',
-      headers: {"Content-Type": "application/JSON"}
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ "value": this.state.value}),
     })
       .then(res => res.json())
       .then(results => {
-        
+        console.log(results);
         this.props.tweetStateHandler(results);
         this.props.pageStateHandler();
 
@@ -38,8 +39,8 @@ class Form extends Component {
     return (
       <form onSubmit = {this.handleSubmit}>
         <label>
-          Name:
-          <input type="text" value={this.state.value} name="name" onChange={this.handleChange} />
+          Search:
+          <input type="text" value={this.state.value} name="searchTerms" onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit" />
 
