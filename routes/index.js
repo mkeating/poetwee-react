@@ -8,11 +8,11 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'This isnt an endpoint' });
 });
 
-/*
-router.post('/get-tweets', TwitterController.getTweets);
-*/
 
-router.post('/get-tweets', function(req, res, next){
+router.post('/get-tweets', TwitterController.getTweets);
+
+
+/*router.post('/get-tweets', function(req, res, next){
 
 	
 	let results = [
@@ -23,6 +23,6 @@ router.post('/get-tweets', function(req, res, next){
 	];
   console.log(req.body);
   res.json(results);
-});
+});*/
 
 module.exports = router;
