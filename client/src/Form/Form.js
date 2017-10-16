@@ -21,6 +21,9 @@ class Form extends Component {
     
     event.preventDefault();
 
+
+    //turn on loading
+    this.props.loadingStateHandler();
     fetch('/get-tweets', {
       method: 'POST',
       headers: {"Content-Type": "application/json"},
@@ -29,6 +32,8 @@ class Form extends Component {
       .then(res => res.json())
       .then(results => {
         console.log(results);
+        //turn off loading
+        this.props.loadingStateHandler();
         this.props.tweetStateHandler(results);
         this.props.pageStateHandler();
 

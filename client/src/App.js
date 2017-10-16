@@ -14,11 +14,13 @@ class App extends Component {
     this.state = {
       tweets: [],
       isForm: true,
-      isResults: false
+      isResults: false,
+      isLoading: false
     }
 
     this.pageStateHandler = this.pageStateHandler.bind(this);
     this.tweetStateHandler = this.tweetStateHandler.bind(this);
+    this.loadingStateHandler = this.loadingStateHandler.bind(this);
   }
 
   pageStateHandler() {
@@ -29,6 +31,10 @@ class App extends Component {
     });
   }
 
+  loadingStateHandler() {
+    this.setState({isLoading: !this.state.isLoading});
+  }
+
   tweetStateHandler(tweets) {
     this.setState({tweets: tweets});
   }
@@ -37,16 +43,21 @@ class App extends Component {
 
     if(this.state.isForm) {
       body = <Form 
-        pageStateHandler = {this.pageStateHandler}
-        tweetStateHandler = {this.tweetStateHandler}
+        pageStateHandler    = {this.pageStateHandler}
+        tweetStateHandler   = {this.tweetStateHandler}
+        loadingStateHandler = {this.loadingStateHandler}
         />
     }
 
     if(this.state.isResults){
       body = <SubPage 
-        pageStateHandler = {this.pageStateHandler}
+        pageStateHandler  = {this.pageStateHandler}
         tweetStateHandler = {this.tweetStateHandler}
         tweets = {this.state.tweets}/>
+    }
+
+    if(this.state.isLoading){
+      body = <div>Loading</div>
     }
 
     return (
