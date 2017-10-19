@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import './Swiper.css';
 
 import Item from './Item/Item';
 

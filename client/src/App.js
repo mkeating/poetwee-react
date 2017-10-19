@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 
 import Form from './Form/Form';
 import SubPage from  './SubPage/SubPage';
