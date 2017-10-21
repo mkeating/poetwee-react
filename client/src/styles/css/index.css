@@ -22,7 +22,9 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif; }
+  font-family: sans-serif;
+  background-color: #00aced;
+  color: white; }
 
 .item {
   height: 100%;
@@ -51,6 +53,25 @@ body {
   overflow-x: hidden;
   height: 100%;
   width: 100%; }
+
+.leftButton {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  min-width: 50px;
+  background: rgba(181, 181, 181, 0.5);
+  z-index: 1000;
+  cursor: pointer; }
+
+.rightButton {
+  position: absolute;
+  left: calc(100% - 50px);
+  top: 0;
+  height: 100%;
+  background: rgba(181, 181, 181, 0.5);
+  min-width: 50px;
+  z-index: 1000;
+  cursor: pointer; }
 
 /* sliding functionality */
 .slidingRight-enter {

@@ -24,6 +24,7 @@ class Swiper extends Component {
 
 	clickLeft() {
 
+    console.log('clicking left');
     this.setState({currentTransitionName: 'slidingLeft'});
 
     if(this.state.currentIndex >= 1){
@@ -56,21 +57,22 @@ class Swiper extends Component {
     return (
     <div>
       <div className="swiper">
-      	
-        <ReactCSSTransitionGroup
-          component="div"
-          className="item-container"
-          transitionName={this.state.currentTransitionName}
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={500}
-          >
-          <Item content={tweets[this.state.currentIndex]} key={'item' + this.state.currentIndex}/>
-        </ReactCSSTransitionGroup>
-       
-       	
+      	<div className="leftButton" onClick={this.clickLeft}> l </div>
+        
+          <ReactCSSTransitionGroup
+            component="div"
+            className="item-container"
+            transitionName={this.state.currentTransitionName}
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={500}
+            >
+            <Item content={tweets[this.state.currentIndex]} key={'item' + this.state.currentIndex}/>
+          </ReactCSSTransitionGroup>
+         
+       <div className = "rightButton" onClick={this.clickRight}> r </div>	
       </div>
-      <div className = "button" onClick={this.clickLeft}> Left Button</div>
-      <div className = "button" onClick={this.clickRight}> Right Button</div>
+      
+      
     </div>
     );
   }
