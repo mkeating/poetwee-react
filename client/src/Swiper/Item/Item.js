@@ -7,17 +7,12 @@ class Item extends Component {
   render( ) {
     return (
 
-    	<Draggable
-    		axis="x"
 
-
-    	>
-    		<span>
+    		
 		      <div className="item" id={this.props.id}>
 		        {this.props.content}
 		      </div>
-		    </span>
-	    </Draggable>
+	
     );
   }
 }

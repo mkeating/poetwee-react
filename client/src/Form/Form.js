@@ -30,12 +30,10 @@ class Form extends Component {
     })
       .then(res => res.json())
       .then(results => {
-        console.log(results);
         //turn off loading
         this.props.loadingStateHandler();
         this.props.tweetStateHandler(results);
         this.props.pageStateHandler();
-
       });     
   }
 
