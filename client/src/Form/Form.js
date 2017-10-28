@@ -6,7 +6,10 @@ class Form extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {value: ''};
+    this.state = {
+      value: '',
+      errorMessage: '',
+    };
   
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,6 +23,10 @@ class Form extends Component {
     
     event.preventDefault();
 
+    if(!this.state.value) {
+      this.setState({errorMessage: 'Please enter something'});
+      return;
+    } 
 
     //turn on loading
     this.props.loadingStateHandler();
@@ -41,7 +48,9 @@ class Form extends Component {
     return (
       <form onSubmit = {this.handleSubmit}>
         <label>
-          Search:
+
+          <div className="error"> {this.state.errorMessage} </div>
+          
           <input type="text" value={this.state.value} name="searchTerms" onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit" />

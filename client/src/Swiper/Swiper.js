@@ -29,6 +29,8 @@ class Swiper extends Component {
         );
     }
 
+    this.props.getFinalTweets(this.key, this.props.tweets[this.state.currentIndex]);
+
 
     return (
         <div>
