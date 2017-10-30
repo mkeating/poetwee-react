@@ -12,11 +12,20 @@ class SubPage extends Component {
     };
 
     this.updateCurrentTweets = this.updateCurrentTweets.bind(this);
+    this.checkChildren = this.checkChildren.bind(this);
+
+    this.finalTweets = {};
   }
 
   updateCurrentTweets(key, tweet){
-    let newTweet = {key, tweet};
-    this.setState({finalTweets: newTweet});
+    //let newTweet = {key, tweet};
+    //this.setState({finalTweets: newTweet});
+
+    this.finalTweets[key] = tweet;
+  }
+
+  checkChildren(){
+    console.log(this.finalTweets);
   }
 
   render() {
@@ -26,6 +35,14 @@ class SubPage extends Component {
    
 
     let swipers = this.props.tweets.map((item, index) => {
+
+      //convert tweets object to array to allow for the infinite/looping scrolling of the swiper
+      /*const tweetsArray = Array.from(item);
+
+      console.log(typeof(tweetsArray));
+
+      console.log(tweetsArray);*/
+
       return(
             <Swiper tweets={item} key={'swiper-' + index}  unique={'swiper-' + index} updateCurrentTweets={this.updateCurrentTweets} 
             />
@@ -38,7 +55,7 @@ class SubPage extends Component {
       <div>
           {swipers}
         <button onClick={this.props.pageStateHandler}> Start over </button>
-        <button onClick={() => {console.log(this.state.finalTweets)}}> test </button>
+        <button onClick={this.checkChildren}> test </button>
       </div>
     );
   }

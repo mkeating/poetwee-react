@@ -6,6 +6,7 @@ import mod from 'react-swipeable-views-core/lib/mod';
 const VirtualizeSwipeableViews = virtualize(SwipeableViews);
 
 //TODO: prevent multiple quick clicks
+//TODO: handle looping around; swipeable views uses negative indexes which is 'undefined' when used as a key for props.tweets
 
 class Swiper extends Component {
 
@@ -17,10 +18,16 @@ class Swiper extends Component {
 		};
 	}
 
+  componentDidMount(){
+    this.props.updateCurrentTweets(this.props.unique, this.props.tweets[this.state.currentIndex]);
+    console.log(typeof(this.props.tweets));
+  }
+
   componentDidUpdate(){
-    //this.props.updateCurrentTweets(this.key, this.props.tweets[this.state.currentIndex]);
+    this.props.updateCurrentTweets(this.props.unique, this.props.tweets[this.state.currentIndex]);
     console.log(this.props.unique);
     console.log(this.props.tweets[this.state.currentIndex]);
+    console.log(this.state.currentIndex);
   }
 
   render() {
@@ -41,7 +48,7 @@ class Swiper extends Component {
               enableMouseEvents={true}
               disableLazyLoading={true}
               index={this.state.currentIndex}
-              onChangeIndex={(indexLatest)=>{this.setState({currentIndex:indexLatest})}}
+              onChangeIndex={(index)=>{this.setState({currentIndex:index})}}
               slideRenderer = {slideRenderer}
               >
             </VirtualizeSwipeableViews>
