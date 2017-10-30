@@ -17,20 +17,20 @@ class Swiper extends Component {
 		};
 	}
 
+  componentDidUpdate(){
+    //this.props.updateCurrentTweets(this.key, this.props.tweets[this.state.currentIndex]);
+    console.log(this.props.unique);
+    console.log(this.props.tweets[this.state.currentIndex]);
+  }
 
-  
   render() {
 
     const slideRenderer = ({key, index}) => {
       return(
-        <div key={index} className="item" dangerouslySetInnerHTML={{ __html: this.props.tweets[(mod(index, this.props.tweets.length))] }}>
-          
+        <div key={index} className="item" dangerouslySetInnerHTML={{ __html: this.props.tweets[(mod(index, this.props.tweets.length))] }}>         
         </div>
         );
     }
-
-    this.props.getFinalTweets(this.key, this.props.tweets[this.state.currentIndex]);
-
 
     return (
         <div>
@@ -41,6 +41,7 @@ class Swiper extends Component {
               enableMouseEvents={true}
               disableLazyLoading={true}
               index={this.state.currentIndex}
+              onChangeIndex={(indexLatest)=>{this.setState({currentIndex:indexLatest})}}
               slideRenderer = {slideRenderer}
               >
             </VirtualizeSwipeableViews>

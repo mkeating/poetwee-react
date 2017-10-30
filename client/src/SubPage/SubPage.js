@@ -10,19 +10,24 @@ class SubPage extends Component {
     this.state = {
       finalTweets: {},
     };
+
+    this.updateCurrentTweets = this.updateCurrentTweets.bind(this);
   }
 
-  getFinalTweets(key, tweet) {
-    this.state.finalTweets.key = tweet;
+  updateCurrentTweets(key, tweet){
+    let newTweet = {key, tweet};
+    this.setState({finalTweets: newTweet});
   }
 
   render() {
 
     //This creates a group of n Swipers, where n is the number of words in the user's input
 
+   
+
     let swipers = this.props.tweets.map((item, index) => {
       return(
-            <Swiper tweets={item} key={'swiper-' + index}  unique={'swiper-' + index} getFinalTweets={this.getFinalTweets}
+            <Swiper tweets={item} key={'swiper-' + index}  unique={'swiper-' + index} updateCurrentTweets={this.updateCurrentTweets} 
             />
       )
     });
@@ -33,6 +38,7 @@ class SubPage extends Component {
       <div>
           {swipers}
         <button onClick={this.props.pageStateHandler}> Start over </button>
+        <button onClick={() => {console.log(this.state.finalTweets)}}> test </button>
       </div>
     );
   }

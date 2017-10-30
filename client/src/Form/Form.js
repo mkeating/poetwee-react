@@ -35,6 +35,12 @@ class Form extends Component {
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({ "value": this.state.value}),
     })
+      .then(res => {
+        if(!res.ok) {
+          throw Error(res.statusText);
+        }
+        return res;
+      })
       .then(res => res.json())
       .then(results => {
         //turn off loading

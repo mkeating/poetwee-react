@@ -64,9 +64,7 @@ class App extends Component {
 
       <div className="App">
         <h1> Poetwee </h1>
-
           {body}
-
       </div>
      
     );
