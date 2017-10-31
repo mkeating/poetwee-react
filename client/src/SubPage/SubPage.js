@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 
 import Swiper from '../Swiper/Swiper';
 
+let body = [];
+
 class SubPage extends Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
-      finalTweets: {},
+      poemComplete: false,
     };
 
     this.updateCurrentTweets = this.updateCurrentTweets.bind(this);
@@ -17,45 +19,55 @@ class SubPage extends Component {
     this.finalTweets = {};
   }
 
-  updateCurrentTweets(key, tweet){
-    //let newTweet = {key, tweet};
-    //this.setState({finalTweets: newTweet});
 
+  //This is passed to each Swiper so that it can report back its currently shown tweet
+  updateCurrentTweets(key, tweet){
     this.finalTweets[key] = tweet;
   }
 
   checkChildren(){
-    console.log(this.finalTweets);
+    this.setState({poemComplete: true});
   }
 
   render() {
 
-    //This creates a group of n Swipers, where n is the number of words in the user's input
 
-   
+    if (!this.state.poemComplete){
 
-    let swipers = this.props.tweets.map((item, index) => {
+      //This creates a group of n Swipers, where n is the number of words in the user's input
+      let swipers = this.props.tweets.map((item, index) => {
+      
+        return(
+              <Swiper tweets={item} key={'swiper-' + index}  unique={'swiper' + index} updateCurrentTweets={this.updateCurrentTweets} 
+              />
+        )
+      });
 
-      //convert tweets object to array to allow for the infinite/looping scrolling of the swiper
-      /*const tweetsArray = Array.from(item);
+      body = <div>{swipers}
+                  <button onClick={this.props.pageStateHandler}> Start over </button>
+                  <button onClick={this.checkChildren}> Done! </button>
+              </div>
+  
 
-      console.log(typeof(tweetsArray));
-
-      console.log(tweetsArray);*/
-
-      return(
-            <Swiper tweets={item} key={'swiper-' + index}  unique={'swiper-' + index} updateCurrentTweets={this.updateCurrentTweets} 
-            />
-      )
-    });
+    } else {
+      let finalTweets = this.finalTweets;
+      let completePoem = []
+      for (let line in finalTweets){
+        completePoem.push(<p dangerouslySetInnerHTML={{ __html: finalTweets[line] }} ></p>);
+      }
+      body = <div>{completePoem}
+              <button onClick={this.props.pageStateHandler}> Start over </button>
+            </div>
+            
+    }
+    
 
     return (
-
-
       <div>
-          {swipers}
-        <button onClick={this.props.pageStateHandler}> Start over </button>
-        <button onClick={this.checkChildren}> test </button>
+          
+          {body}
+
+        
       </div>
     );
   }

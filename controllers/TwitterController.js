@@ -19,7 +19,7 @@ exports.getTweets = async (req, res) => {
 
 	 	return new Promise ((resolve, reject) => {
 				
-			Twitter.get('search/tweets', { q: word, count: 10 }, function(err, data, response) {
+			Twitter.get('search/tweets', { q: word, count: 10, truncated: false, retweeted: false }, function(err, data, response) {
 
 				if(err) {
 					//TODO: return this to front end
@@ -43,7 +43,7 @@ exports.getTweets = async (req, res) => {
 								const links = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gi;
 
 								//get the tweet text, remove: links, screennames, 'RT', hashtags. 
-
+								
 								//add strong tags to the search word, and spaces on each side to prevent errors with subwords like "a" and "to" and "can"
 								let cleanStatus = ' ' + status.text.replace(links, '')
 									.replace(screennames, '')
@@ -67,8 +67,8 @@ exports.getTweets = async (req, res) => {
 		return searchTwitter(element); 
 	}))
 	.then(results => {
-		console.log('final results');
-		console.log(results);
+		//console.log('final results');
+		//console.log(results);
 		res.json(results);
 	});
 }

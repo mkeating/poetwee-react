@@ -19,14 +19,14 @@ class Swiper extends Component {
 	}
 
   componentDidMount(){
-    this.props.updateCurrentTweets(this.props.unique, this.props.tweets[this.state.currentIndex]);
+    this.props.updateCurrentTweets(this.props.unique, this.props.tweets[(mod(this.state.currentIndex, this.props.tweets.length))]);
     console.log(typeof(this.props.tweets));
   }
 
   componentDidUpdate(){
-    this.props.updateCurrentTweets(this.props.unique, this.props.tweets[this.state.currentIndex]);
+    this.props.updateCurrentTweets(this.props.unique, this.props.tweets[(mod(this.state.currentIndex, this.props.tweets.length))]);
     console.log(this.props.unique);
-    console.log(this.props.tweets[this.state.currentIndex]);
+    console.log(this.props.tweets[(mod(this.state.currentIndex, this.props.tweets.length))]);
     console.log(this.state.currentIndex);
   }
 
@@ -42,7 +42,7 @@ class Swiper extends Component {
     return (
         <div>
           <div className="swiper">
-            <div className="leftButton" onClick={() => this.setState({currentIndex: this.state.currentIndex - 1})}> l </div> 
+            <div className="leftButton" onClick={() => this.setState({currentIndex: this.state.currentIndex - 1})}> L </div> 
             
             <VirtualizeSwipeableViews
               enableMouseEvents={true}
@@ -53,7 +53,7 @@ class Swiper extends Component {
               >
             </VirtualizeSwipeableViews>
             
-            <div className = "rightButton" onClick={() => this.setState({currentIndex: this.state.currentIndex + 1})}> r </div>
+            <div className = "rightButton" onClick={() => this.setState({currentIndex: this.state.currentIndex + 1})}> R </div>
           </div>
         </div>
     );
