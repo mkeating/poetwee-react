@@ -5,6 +5,8 @@
   margin: 0 auto;
   text-align: center;
   color: #fff;
-  cursor: pointer; }
+  cursor: pointer;
+  display: flex;
+  align-items: center; }
 
 /*# sourceMappingURL=Item.css.map */

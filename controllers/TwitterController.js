@@ -23,6 +23,7 @@ exports.getTweets = async (req, res) => {
 
 				if(err) {
 					//TODO: return this to front end
+					console.log('error!')
 					reject(err);
 					return;
 				}
@@ -49,7 +50,7 @@ exports.getTweets = async (req, res) => {
 									.replace(screennames, '')
 									.replace('RT', '')
 									.replace(hashtags, '')
-									.replace(word, `<strong>${word}</strong>`) + ' ';
+									/*.replace(word, `<strong>${word}</strong>`) + ' '*/;
 
 								//add to results
 								thisWord.push(cleanStatus);			
@@ -59,16 +60,12 @@ exports.getTweets = async (req, res) => {
 				}
 			}); //end twitter.get
 		});
-
 	}   // end searchTwitter
  
-
 	Promise.all(searchWords.map(element => {
 		return searchTwitter(element); 
 	}))
 	.then(results => {
-		//console.log('final results');
-		//console.log(results);
 		res.json(results);
 	});
 }

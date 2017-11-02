@@ -37,7 +37,8 @@ class Form extends Component {
     })
       .then(res => {
         if(!res.ok) {
-          throw Error(res.statusText);
+          this.setState({errorMessage: 'Something went wrong'});
+          return;
         }
         return res;
       })

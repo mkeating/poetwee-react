@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import logo from './logo.svg';
 
 import Form from './Form/Form';
 import SubPage from  './SubPage/SubPage';
+
+
 
 let body = {};
 
@@ -56,15 +59,16 @@ class App extends Component {
     }
 
     if(this.state.isLoading){
-      body = <div>Loading</div>
+      body = <img src={logo} className="App-logo" alt="logo" />
     }
 
     return (
 
 
       <div className="App">
-        <h1> Poetwee </h1>
+        <h1><img src = {require('./poetwee-logo.png')} className="poetwee-logo"/></h1>
           {body}
+        
       </div>
      
     );

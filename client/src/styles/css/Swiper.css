@@ -2,8 +2,7 @@
   width: 80%;
   position: relative;
   margin: 2em auto;
-  border-top: 1px solid lightgrey;
-  border-bottom: 1px solid lightgrey; }
+  border: 1px solid white; }
 
 .button {
   height: 50px;
@@ -23,49 +22,37 @@
   left: 0;
   height: 100%;
   min-width: 50px;
-  background: rgba(181, 181, 181, 0.5);
   z-index: 1000;
-  cursor: pointer; }
+  cursor: pointer;
+  font-size: 2em;
+  -webkit-transition: all 1s;
+  /* Safari */
+  transition: all 1s;
+  display: flex;
+  align-items: center; }
+
+.leftButton:hover {
+  background: white;
+  color: #00aced; }
 
 .rightButton {
   position: absolute;
   left: calc(100% - 50px);
   top: 0;
   height: 100%;
-  background: rgba(181, 181, 181, 0.5);
   min-width: 50px;
   z-index: 1000;
-  cursor: pointer; }
+  cursor: pointer;
+  font-size: 2em;
+  -webkit-transition: all 1s;
+  /* Safari */
+  transition: all 1s;
+  text-align: center;
+  display: flex;
+  align-items: center; }
 
-/* sliding functionality */
-.slidingRight-enter {
-  transform: translate(100%); }
-
-.slidingRight-enter.slidingRight-enter-active {
-  transform: translate(0%);
-  transition: transform 600ms ease-in-out; }
-
-.slidingRight-leave {
-  transform: translate(0%); }
-
-.slidingRight-leave.slidingRight-leave-active {
-  transform: translate(-100%);
-  transition: transform 600ms ease-in-out; }
-
-.slidingLeft-enter {
-  transform: translate(-100%); }
-
-.slidingLeft-enter.slidingLeft-enter-active {
-  transform: translate(0%);
-  transition: transform 600ms ease-in-out; }
-
-.slidingLeft-leave {
-  transform: translate(0%); }
-
-.slidingLeft-leave.slidingLeft-leave-active {
-  transform: translate(100%);
-  transition: transform 600ms ease-in-out; }
-
-/* end slider functionality */
+.rightButton:hover {
+  background: white;
+  color: #00aced; }
 
 /*# sourceMappingURL=Swiper.css.map */
