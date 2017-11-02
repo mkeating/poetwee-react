@@ -44,8 +44,8 @@ class SubPage extends Component {
       });
 
       body = <div>{swipers}
-                  <button onClick={this.props.pageStateHandler}> Start over </button>
-                  <button onClick={this.checkChildren}> Done! </button>
+                  <button onClick={this.props.pageStateHandler} className="pt-button"> Start over </button>
+                  <button onClick={this.checkChildren} className="pt-button"> Done! </button>
               </div>
   
 
@@ -56,7 +56,7 @@ class SubPage extends Component {
         completePoem.push(<p dangerouslySetInnerHTML={{ __html: finalTweets[line] }} ></p>);
       }
       body = <div>{completePoem}
-              <button onClick={this.props.pageStateHandler}> Start over </button>
+              <button onClick={this.props.pageStateHandler} className="pt-button"> Start over </button>
             </div>
             
     }

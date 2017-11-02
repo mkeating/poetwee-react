@@ -27,8 +27,18 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  font-size: 16px;
   background-color: #00aced;
   color: white; }
+
+.pt-button {
+  background: none;
+  border: 1px solid white;
+  color: white;
+  line-height: 2em;
+  margin: 1em;
+  min-width: 50px;
+  cursor: pointer; }
 
 .item {
   min-height: 120px;

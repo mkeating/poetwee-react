@@ -60,7 +60,7 @@ class Form extends Component {
           
           <input type="text" value={this.state.value} name="searchTerms" onChange={this.handleChange} />
         </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" className="pt-button"/>
 
       </form>
     );
