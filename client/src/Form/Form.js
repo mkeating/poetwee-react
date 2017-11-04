@@ -38,7 +38,6 @@ class Form extends Component {
       .then(res => {
         if(!res.ok) {
           this.setState({errorMessage: 'Something went wrong'});
-          return;
         }
         return res;
       })
@@ -48,21 +47,25 @@ class Form extends Component {
         this.props.loadingStateHandler();
         this.props.tweetStateHandler(results);
         this.props.pageStateHandler();
+      }).catch(err => {
+         console.log(err);
       });     
   }
 
   render() {
     return (
+      <div className="form-container">
       <form onSubmit = {this.handleSubmit}>
         <label>
 
           <div className="error"> {this.state.errorMessage} </div>
           
-          <input type="text" value={this.state.value} name="searchTerms" onChange={this.handleChange} />
+          <input type="text" value={this.state.value} name="searchTerms" onChange={this.handleChange} autoFocus/>
         </label>
-        <input type="submit" value="Submit" className="pt-button"/>
+        <input type="submit" value="Submit" className="submit-button"/>
 
       </form>
+      </div>
     );
   }
 }

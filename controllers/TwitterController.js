@@ -21,12 +21,12 @@ exports.getTweets = async (req, res) => {
 				
 			Twitter.get('search/tweets', { q: word, count: 10, truncated: false, retweeted: false }, function(err, data, response) {
 
-				if(err) {
+				/*if(err) {
 					//TODO: return this to front end
 					console.log('error!')
 					reject(err);
 					return;
-				}
+				}*/
 
 				if(response.statusCode == 200) {
 
@@ -58,6 +58,9 @@ exports.getTweets = async (req, res) => {
 					}
 					resolve(thisWord);	
 				}
+			})
+			.catch(err => {
+				throw(err);
 			}); //end twitter.get
 		});
 	}   // end searchTwitter
