@@ -42,7 +42,7 @@ class Swiper extends Component {
     return (
         <div>
           <div className="swiper">
-            <div className="leftButton" onClick={() => this.setState({currentIndex: this.state.currentIndex - 1})}>&#9664; </div> 
+            <div className="leftButton" onClick={() => this.setState({currentIndex: this.state.currentIndex - 1})}>&#60;</div> 
             
             <VirtualizeSwipeableViews
               enableMouseEvents={true}
@@ -53,7 +53,7 @@ class Swiper extends Component {
               >
             </VirtualizeSwipeableViews>
             
-            <div className = "rightButton" onClick={() => this.setState({currentIndex: this.state.currentIndex + 1})}>&#9654; </div>
+            <div className = "rightButton" onClick={() => this.setState({currentIndex: this.state.currentIndex + 1})}>&#62;</div>
           </div>
         </div>
     );

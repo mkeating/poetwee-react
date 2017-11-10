@@ -29,7 +29,8 @@
   /* Safari */
   transition: all 1s;
   display: flex;
-  align-items: center; }
+  align-items: center;
+  justify-content: center; }
 
 .leftButton:hover {
   background: white;
@@ -49,7 +50,8 @@
   transition: all 1s;
   text-align: center;
   display: flex;
-  align-items: center; }
+  align-items: center;
+  justify-content: center; }
 
 .rightButton:hover {
   background: white;

@@ -29,6 +29,12 @@ class SubPage extends Component {
     this.setState({poemComplete: true});
   }
 
+  startOver(){
+    this.props.formStateHandler();
+    this.props.resultsStateHandler();
+
+  }
+
   render() {
 
 
@@ -55,8 +61,10 @@ class SubPage extends Component {
       for (let line in finalTweets){
         completePoem.push(<p dangerouslySetInnerHTML={{ __html: finalTweets[line] }} ></p>);
       }
-      body = <div>{completePoem}
-              <button onClick={this.props.pageStateHandler} className="pt-button"> Start over </button>
+      body = <div>
+              <h2>Your brilliant poetwee:</h2>
+              {completePoem}
+              <button onClick={this.startOver} className="pt-button"> Start over </button>
             </div>
             
     }

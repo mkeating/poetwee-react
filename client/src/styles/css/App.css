@@ -37,7 +37,8 @@ body {
   color: white;
   line-height: 2em;
   margin: 1em;
-  min-width: 50px;
-  cursor: pointer; }
+  min-width: 100px;
+  cursor: pointer;
+  font-size: 2em; }
 
 /*# sourceMappingURL=App.css.map */

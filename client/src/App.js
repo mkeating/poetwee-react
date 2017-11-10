@@ -17,20 +17,27 @@ class App extends Component {
       tweets: [],
       isForm: true,
       isResults: false,
-      isLoading: false
+      isLoading: false,
+      errorMessage: '',
     }
 
-    this.pageStateHandler = this.pageStateHandler.bind(this);
+    this.formStateHandler = this.formStateHandler.bind(this);
+    this.resultsStateHandler = this.resultsStateHandler.bind(this);
     this.tweetStateHandler = this.tweetStateHandler.bind(this);
     this.loadingStateHandler = this.loadingStateHandler.bind(this);
   }
 
-  pageStateHandler() {
-    
-    this.setState({
-      isForm: !this.state.isForm,
-      isResults: !this.state.isResults,
-    });
+  errorHandler(msg) {
+    console.log('setting error');
+    this.setState({errorMessage: msg});
+  }
+
+  formStateHandler() {
+    this.setState({isForm: !this.state.isForm});
+  }
+
+  resultsStateHandler() { 
+    this.setState({isResults: !this.state.isResults});
   }
 
   loadingStateHandler() {
@@ -44,16 +51,22 @@ class App extends Component {
   render() {
 
     if(this.state.isForm) {
-      body = <Form 
-        pageStateHandler    = {this.pageStateHandler}
+      body = 
+       
+      <Form 
+        formStateHandler    = {this.formStateHandler}
+        resultsStateHandler = {this.resultsStateHandler}
         tweetStateHandler   = {this.tweetStateHandler}
         loadingStateHandler = {this.loadingStateHandler}
+        errorHandler        = {this.errorHandler}
         />
+      
     }
 
     if(this.state.isResults){
       body = <SubPage 
-        pageStateHandler  = {this.pageStateHandler}
+        formStateHandler    = {this.formStateHandler}
+        resultsStateHandler = {this.resultsStateHandler}
         tweetStateHandler = {this.tweetStateHandler}
         tweets = {this.state.tweets}/>
     }
@@ -62,11 +75,14 @@ class App extends Component {
       body = <img src={logo} className="App-logo" alt="logo" />
     }
 
+    console.log(this.state.errorMessage);
+
     return (
 
 
       <div className="App">
         <h1><img src = {require('./poetwee-logo.png')} className="poetwee-logo"/></h1>
+          <div className="error"> {this.state.errorMessage} </div>
           {body}
         
       </div>
