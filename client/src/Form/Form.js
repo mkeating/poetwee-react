@@ -22,11 +22,12 @@ class Form extends Component {
     
     event.preventDefault();
 
-    if(!this.state.value) {
+    if(!this.state.value || this.state.value.split(' ').length < 2) {
       this.setState({errorMessage: 'Please enter a multi-word phrase!'});
       return;
     } 
 
+    this.props.formStateHandler();
     //turn on loading
     this.props.loadingStateHandler();
 
@@ -36,26 +37,30 @@ class Form extends Component {
       body: JSON.stringify({ "value": this.state.value}),
     })
       .then(res => {
-
         if(!res.ok){
           console.log('error');
-          console.log(res);
-
-       
-            
+          console.log(res.statusText);
+          //turn off loading     
           this.props.loadingStateHandler();
+          //bring back form and display error
           this.props.formStateHandler();
-          this.props.errorHandler('woops!');
+          this.setState({errorMessage: 'There was a server error'});
          }           
-        return res.json();
+         else {
+          return res.json();
+         }  
       })
       .then(results => {
         //turn off loading
         this.props.loadingStateHandler();
-        this.props.tweetStateHandler(results);
-        this.props.formStateHandler();
-        this.props.resultsStateHandler();
-      }).catch(err => {
+        console.log(results);
+        if(results[0].error){
+          console.log('error from twitter'); //works; build into UI
+        } else{
+          this.props.tweetStateHandler(results);
+          this.props.formStateHandler();
+          this.props.resultsStateHandler();
+        }
         
       });     
   }
@@ -63,11 +68,10 @@ class Form extends Component {
   render() {
     return (
       <div className="form-container">
-      <form onSubmit = {this.handleSubmit}>
-        <label>
 
-         
-          
+      <div>{this.state.errorMessage}</div>
+      <form onSubmit = {this.handleSubmit}>
+        <label> 
           <input type="text" value={this.state.value} name="searchTerms" onChange={this.handleChange} autoFocus/>
         </label>
         <input type="submit" value="Submit" className="submit-button"/>
