@@ -31,38 +31,40 @@ class Form extends Component {
     //turn on loading
     this.props.loadingStateHandler();
 
-    fetch('/get-tweets', {
+    //fetch('/get-tweets', {
+    fetch('/bad-route', {
       method: 'POST',
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({ "value": this.state.value}),
     })
       .then(res => {
         if(!res.ok){
+          //server error
           console.log('error');
-          console.log(res.statusText);
+          console.log(res.statusCode);
           //turn off loading     
           this.props.loadingStateHandler();
           //bring back form and display error
           this.props.formStateHandler();
-          this.setState({errorMessage: 'There was a server error'});
+          this.setState({errorMessage: 'There was a server error'}); 
+
          }           
          else {
-          return res.json();
+          //return res.json();
+          console.log('no server error');
+            //turn off loading
+            this.props.loadingStateHandler();
+            console.log(res);
+            if(res[0].error){
+              //twitter error
+              console.log('error from twitter'); //works; build into UI
+            } else{
+              this.props.tweetStateHandler(res);
+              this.props.formStateHandler();
+              this.props.resultsStateHandler();
+            }
          }  
-      })
-      .then(results => {
-        //turn off loading
-        this.props.loadingStateHandler();
-        console.log(results);
-        if(results[0].error){
-          console.log('error from twitter'); //works; build into UI
-        } else{
-          this.props.tweetStateHandler(results);
-          this.props.formStateHandler();
-          this.props.resultsStateHandler();
-        }
-        
-      });     
+      });
   }
 
   render() {
