@@ -35,11 +35,16 @@ exports.getTweets = async (req, res) => {
 				
 			Twitter.get('search/tweets', { q: word, count: 10, truncated: false, retweeted: false })
 				.catch(err => {
-					console.log('error!', err.stack)
+					console.log('error!', err.stack);
+					return {error: err.stack};
 				})
 				.then(result => {
 
-					console.log(result.resp.statusCode);
+					console.log(result);
+					console.log(result.resp.statusCode); //returns a status code for each word
+					console.log('**************************');
+					console.log('**************************');
+					console.log('**************************');
 
 					if(result.resp.statusCode == 200) {
 						//iterate over all results

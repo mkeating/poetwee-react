@@ -40,6 +40,9 @@ class SubPage extends Component {
 
     if (!this.state.poemComplete){
 
+      //check if results have an error
+      console.log(this.props);
+
       //This creates a group of n Swipers, where n is the number of words in the user's input
       let swipers = this.props.tweets.map((item, index) => {
       
@@ -71,11 +74,8 @@ class SubPage extends Component {
     
 
     return (
-      <div>
-          
+      <div>     
           {body}
-
-        
       </div>
     );
   }

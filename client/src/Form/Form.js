@@ -38,30 +38,33 @@ class Form extends Component {
     })
       .then(res => {
         if(!res.ok){
-          console.log('error');
-          console.log(res.statusText);
+          //console.log('error');
+          //console.log(res);
           //turn off loading     
           this.props.loadingStateHandler();
           //bring back form and display error
           this.props.formStateHandler();
-          this.setState({errorMessage: 'There was a server error'});
+          this.props.errorHandler(`There was an error from the server! ${res.statusText}`);
+          return null;
          }           
          else {
           return res.json();
          }  
       })
       .then(results => {
-        //turn off loading
-        this.props.loadingStateHandler();
-        console.log(results);
-        if(results[0].error){
-          console.log('error from twitter'); //works; build into UI
-        } else{
-          this.props.tweetStateHandler(results);
-          this.props.formStateHandler();
-          this.props.resultsStateHandler();
+        if(results){
+          //turn off loading
+          this.props.loadingStateHandler();
+          console.log(results);
+          if(results[0].error){
+            console.log('error from twitter'); //works; build into UI
+            this.props.formStateHandler();
+            this.props.errorHandler('There was an error from Twitter!');
+          } else{
+            this.props.tweetStateHandler(results);
+            
+          }
         }
-        
       });     
   }
 

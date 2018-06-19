@@ -25,6 +25,7 @@ class App extends Component {
     this.resultsStateHandler = this.resultsStateHandler.bind(this);
     this.tweetStateHandler = this.tweetStateHandler.bind(this);
     this.loadingStateHandler = this.loadingStateHandler.bind(this);
+    this.errorHandler = this.errorHandler.bind(this);
   }
 
   errorHandler(msg) {
