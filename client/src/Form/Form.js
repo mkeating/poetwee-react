@@ -58,8 +58,9 @@ class Form extends Component {
           console.log(results);
           if(results[0].error){
             console.log('error from twitter'); //works; build into UI
+            console.log(results[0].error)
             this.props.formStateHandler();
-            this.props.errorHandler('There was an error from Twitter!');
+            this.props.errorHandler(`There was an error from Twitter! ${results[0].error}`);
           } else{
             this.props.tweetStateHandler(results);
             

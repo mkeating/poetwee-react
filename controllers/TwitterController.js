@@ -40,11 +40,11 @@ exports.getTweets = async (req, res) => {
 				})
 				.then(result => {
 
-					console.log(result);
-					console.log(result.resp.statusCode); //returns a status code for each word
-					console.log('**************************');
-					console.log('**************************');
-					console.log('**************************');
+					//console.log(result);
+					//console.log(result.resp.statusCode); //returns a status code for each word
+					//console.log('**************************');
+					//console.log('**************************');
+					//console.log('**************************');
 
 					if(result.resp.statusCode == 200) {
 						//iterate over all results
@@ -71,13 +71,11 @@ exports.getTweets = async (req, res) => {
 									//add to results
 									thisWord.push(cleanStatus);			
 							}
-							
-
 							resolve(thisWord);
 						}
 					} else {
-						console.log(result.resp.statusCode);
-						resolve({'error': 'woopss'});
+						console.log(result.resp.statusMessage);
+						resolve({'error': result.resp.statusMessage});
 					}
 				}); //end twit.get
 		});
