@@ -1,0 +1,1 @@
+web: PORT=5000 nodemon ./bin/www
