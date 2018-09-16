@@ -1,1 +1,1 @@
-web: PORT=5000 nodemon ./bin/www
+web: PORT=3001 nodemon ./bin/www
