@@ -1,6 +1,13 @@
 const twit = require('twit');
-const config = require('./config.js');
 
+
+const config = {
+  consumer_key: 		'g3MbLiT1Ff2CssxRGMvgGHLyi',  
+  consumer_secret: 		'Xb1b7MZy0H6Ld7KY0OMKMFp1TaDjy4oSEysk9kg0fyQYANMbJP',
+  access_token: 		'17341505-rNhLbWXwPJ8WbBwX6UMvFcDIFCXIG7hh8P2L81rjC',  
+  access_token_secret: 	'166RTcX86kWK8U0167yguqumhOXBHyj6XqqaI7JQOAo6j',
+  timeout_ms:           5*1000
+};
 
 const Twitter = new twit(config);
 
